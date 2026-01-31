@@ -10,15 +10,14 @@ title: Learning Garden
 
 <hr>
 
-{# We loop through a custom order to ensure Evergreen appears first #}
 {% set stages = ["evergreen", "sapling", "seed"] %}
 
 {% for stage in stages %}
   <section class="garden-section">
     <h2>
-      {% if stage == "evergreen" %}🌳 Evergreen
-      {% elif stage == "sapling" %}🌿 Saplings
-      {% else %}🌱 Seeds
+      {% if stage == "evergreen" %}Evergreen
+      {% elif stage == "sapling" %}Saplings
+      {% else %}Seeds
       {% endif %}
     </h2>
     

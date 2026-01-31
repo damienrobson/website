@@ -7,18 +7,17 @@ title: Now
 
 _This is a [now page](https://nownownow.com/about), inspired by Derek Sivers._
 
-### 🎯 Current Focus
+### Current Focus
 
-- Mastering **Eleventy 3.0** and ESM in Node.js.
 - Building out this living CV to document my career pivot.
 
-### 📚 Reading
+### Reading
 
-- _Project Hail Mary_ by Andy Weir.
-- _Refactoring UI_ by Adam Wathan & Steve Schoger.
+- _Lord of the Rings: The Fellowship of the Ring_ by J.R.R. Tolkien.
 
-### 🎧 Listening
+### Listening
 
-- Deep Focus playlists on Spotify for coding sessions.
+- _Gary Numan_
+- _Barenaked Ladies_
 
 _Last updated: {{ page.date | postDate }}_
