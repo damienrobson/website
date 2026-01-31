@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+---
+<article class="prose">
+  <header>
+    <h1>{{ title }}</h1>
+    <time datetime="{{ page.date }}">Published: {{ page.date | postDate }}</time>
+  </header>
+
+  <hr>
+
+  {{ content | safe }}
+
+  <footer>
+    <p><a href="/blog">← Back to all posts</a></p>
+  </footer>
+</article>

@@ -1,0 +1,36 @@
+---
+layout: layouts/base.njk
+title: Blog
+---
+
+<header>
+  <h1>Writing</h1>
+  <p>Thoughts on technology, design, and the occasional deep dive.</p>
+</header>
+
+<div class="blog-index">
+  {# Grouping by Year #}
+  {% for year, posts in collections.posts | reverse | groupby("date.getFullYear()") %}
+    <section>
+      <h2>{{ year }}</h2>
+      <ul class="post-list">
+        {% for post in posts %}
+          <li class="post-item">
+            <time datetime="{{ post.date }}">{{ post.date | postDate }}</time>
+            <a href="{{ post.url }}"><strong>{{ post.data.title }}</strong></a>
+            {% if post.data.description %}
+              <p class="post-excerpt">{{ post.data.description }}</p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+</div>
+
+<style>
+  .post-list { list-style: none; padding: 0; }
+  .post-item { margin-bottom: 1.5rem; }
+  .post-item time { display: block; font-size: 0.85rem; color: #666; }
+  .post-excerpt { margin: 0.25rem 0; font-size: 0.95rem; color: #444; }
+</style>

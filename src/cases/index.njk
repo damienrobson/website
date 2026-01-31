@@ -1,0 +1,51 @@
+---
+layout: layouts/base.njk
+title: Case Studies
+---
+
+<header>
+  <h1>Selected Work</h1>
+  <p>A deep dive into the problems I've solved and the impact I've made.</p>
+</header>
+
+<div class="cases-grid">
+  {% for study in collections.caseStudies | reverse %}
+    <article class="case-card">
+      <div class="case-card-content">
+        <h3><a href="{{ study.url }}">{{ study.data.title }}</a></h3>
+        <p class="case-role"><strong>Role:</strong> {{ study.data.role }}</p>
+        <p>{{ study.data.summary }}</p>
+        
+        <div class="case-tags">
+          {% for tool in study.data.tools %}
+            <span class="tool-tag">{{ tool }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</div>
+
+<style>
+  .cases-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 2rem; 
+    margin-top: 2rem;
+  }
+  .case-card { 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 1.5rem; 
+    transition: transform 0.2s;
+  }
+  .case-card:hover { transform: translateY(-4px); border-color: var(--link); }
+  .case-role { font-size: 0.9rem; color: #555; }
+  .tool-tag { 
+    font-size: 0.75rem; 
+    background: #f0f0f0; 
+    padding: 2px 8px; 
+    border-radius: 12px; 
+    margin-right: 4px; 
+  }
+</style>

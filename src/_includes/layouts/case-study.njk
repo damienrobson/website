@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+---
+<article class="case-study">
+  <header class="hero-section">
+    <h1>{{ title }}</h1>
+    <p class="summary">{{ summary }}</p>
+    
+    <div class="metadata-grid">
+      <div><strong>Role:</strong> {{ role }}</div>
+      <div><strong>Tools:</strong> {{ tools | join(", ") }}</div>
+      {% if client %}<div><strong>Client:</strong> {{ client }}</div>{% endif %}
+    </div>
+  </header>
+
+  <section class="case-content">
+    {{ content | safe }}
+  </section>
+
+  <aside class="results-box">
+    <h3>The Impact</h3>
+    <p>{{ outcome }}</p>
+  </aside>
+</article>

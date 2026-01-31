@@ -1,0 +1,42 @@
+:root {
+  --font-main: system-ui, sans-serif;
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --link: #0070f3;
+}
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: var(--text);
+}
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+nav a {
+  text-decoration: none;
+  color: var(--link);
+}
+.garden-section {
+  margin-bottom: 2rem;
+}
+.badge {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: #eee;
+}
+.metadata-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background: #f9f9f9;
+  padding: 1rem;
+  margin: 1rem 0;
+}

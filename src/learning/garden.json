@@ -1,0 +1,6 @@
+{
+  "layout": "layouts/garden.njk",
+  "tags": ["learning"],
+  "maturity": "seed",
+  "permalink": "/garden/{{ title | slugify }}/"
+}

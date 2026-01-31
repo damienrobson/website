@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+title: Learning Garden
+---
+
+<header>
+  <h1>Learning Garden</h1>
+  <p>An open collection of notes, sketches, and half-baked ideas I'm currently tending to.</p>
+</header>
+
+<hr>
+
+{# We loop through a custom order to ensure Evergreen appears first #}
+{% set stages = ["evergreen", "sapling", "seed"] %}
+
+{% for stage in stages %}
+  <section class="garden-section">
+    <h2>
+      {% if stage == "evergreen" %}🌳 Evergreen
+      {% elif stage == "sapling" %}🌿 Saplings
+      {% else %}🌱 Seeds
+      {% endif %}
+    </h2>
+    
+    <ul class="garden-list">
+      {% set categoryNotes = collections.learning | reverse %}
+      {% set found = false %}
+      
+      {% for note in categoryNotes %}
+        {% if note.data.maturity == stage %}
+          <li>
+            <a href="{{ note.url }}">{{ note.data.title }}</a>
+            <small>— Last tended {{ note.date | postDate }}</small>
+          </li>
+          {% set found = true %}
+        {% endif %}
+      {% endfor %}
+
+      {% if not found %}
+        <li><small>Nothing in this stage of the garden yet.</small></li>
+      {% endif %}
+    </ul>
+  </section>
+{% endfor %}

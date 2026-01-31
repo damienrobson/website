@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | {{ metadata.siteName }}</title>
+  <meta name="description" content="{{ description or metadata.description }}">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/" class="logo"><strong>My Living CV</strong></a>
+      <ul>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/learning/">Garden</a></li>
+        <li><a href="/cases/">Work</a></li>
+        <li><a href="/now/">Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <p>&copy; {% year %} — Built with 11ty</p>
+  </footer>
+</body>
+</html>
