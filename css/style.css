@@ -82,6 +82,15 @@ a:hover {
   border-bottom: 1px solid var(--accent);
 }
 
+main a {
+  text-decoration: underline;
+  transition: none;
+}
+
+main a:hover {
+  border-bottom: none;
+}
+
 nav {
   display: flex;
   gap: 1.5rem;
@@ -130,6 +139,7 @@ section {
 }
 
 .date {
+  color: black;
   font-family: monospace;
   opacity: 0.6;
   font-size: 0.9rem;
@@ -151,6 +161,10 @@ footer {
   opacity: 0.6;
 }
 
+footer p {
+  color: black;
+}
+
 @media (max-width: 400px) {
   .article-data {
     flex-direction: column;
@@ -158,5 +172,15 @@ footer {
 
   .article-data-divider {
     display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  footer p {
+    color: white;
+  }
+
+  .date {
+    color: white;
   }
 }
