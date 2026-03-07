@@ -23,6 +23,14 @@
   border-radius: 0.125rem;
 }
 
+a[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.85em;
+  display: inline-block;
+  text-decoration: none;
+  vertical-align: text-top;
+}
+
 .sr-only {
   position: absolute;
   left: -10000px;

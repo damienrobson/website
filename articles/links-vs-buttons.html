@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Links vs. Buttons | Damien Robson</title>
+
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+  </head>
+  <body>
+    <div id="skip"><a href="#content">Skip to Main Content</a></div>
+
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/articles/" aria-current="page">Articles</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/now">Now</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1>Damien Robson</h1>
+      <p>
+        <strong>I'm Damien.</strong> I build digital experiences that everyone
+        can use.
+      </p>
+    </header>
+
+    <main id="content">
+      <article>
+        <header>
+          <h2>Links vs. Buttons</h2>
+          <div class="post-meta">
+            <time datetime="2026-03-07">March 7, 2026 </time> •
+            <span>Development, Design & Accessibility</span>
+          </div>
+        </header>
+
+        <p>
+          I've been asked the same set of questions quite a lot at work
+          recently:
+        </p>
+        <ul>
+          <li>"should this be a button or a link?"</li>
+          <li>"can I style a link as a button?"</li>
+          <li>"can I style a button as a link?"</li>
+        </ul>
+        <p>
+          After repeating the same information time and time again, I decided to
+          do something more pragmatic about it. On the second Tuesday of every
+          month, we host an Accessibility Guild, where any colleague who wants
+          to can give a short presentation on an accessibility-focused topic,
+          and this felt like the perfect opportunity to put together a
+          presentation to put this line of questioning to bed once and for all.
+        </p>
+
+        <p>
+          <b>Side note</b>: don't get me wrong, I'm perfectly happy to help
+          people out and don't mind being asked the same questions by different
+          people. My reason for doing this stems from the fact that the same
+          question kept coming up and clearly something wasn't sticking.
+        </p>
+
+        <p>
+          What follows is an abridged version of the presentation. Hopefully,
+          dear reader, you can use it to glean answers and ideas that you can
+          carry forward into your own projects, both personal and professional.
+        </p>
+
+        <p>With that, let's dive in.</p>
+
+        <h3>Links</h3>
+
+        <h4>What are they for?</h4>
+        <p>
+          Links <b>are for navigation</b>. They take your users to other pages
+          within your site, other locations within the same page, or to a
+          different domain altogether.
+        </p>
+
+        <h4>Which element?</h4>
+        <p>Links are built using the <code>a</code> element.</p>
+
+        <h4>Accessibility Features</h4>
+        <ul>
+          <li>
+            Links are announced as "link" to screen reader users, and they
+            expect to be taken somewhere.
+          </li>
+          <li>Links are triggered with the <kbd>Enter</kbd> key.</li>
+          <li>
+            Links can be right-clicked for additional context such as opening in
+            a new tab.
+          </li>
+        </ul>
+
+        <h4>Styling</h4>
+        <ul>
+          <li>
+            If at all possible, <b>keep the underline</b>; if you can't, or your
+            designs don't allow it, consider at the very least showing it on
+            focus/hover.
+          </li>
+          <li>Ensure the "pointer" cursor is used.</li>
+          <li>
+            Make sure to use a high-contrast focus ring (see my
+            <a href="/resources/">Resources list</a> for a great example).
+          </li>
+        </ul>
+
+        <h3>Buttons</h3>
+
+        <h4>What are they for?</h4>
+        <p>
+          Buttons <b>are for actions</b>. They change things, submit things or
+          trigger functional changes. Saving a form or opening a menu is a
+          perfect use-case for buttons.
+        </p>
+
+        <h4>Which element?</h4>
+        <p>Buttons are built using the <code>button</code> element.</p>
+
+        <h4>Accessibility Features</h4>
+        <ul>
+          <li>
+            Buttons are announced as "button" to screen reader users, and they
+            expect something to happen when interacted with.
+          </li>
+          <li>
+            Buttons are triggered with both the <kbd>Enter</kbd> key and the
+            <kbd>Space</kbd> key.
+          </li>
+          <li>Buttons cannot be right-clicked for additional context.</li>
+        </ul>
+
+        <h4>Styling</h4>
+        <ul>
+          <li>
+            More of a common practice than an crucial "rule", consider using the
+            "pointer" cursor.
+          </li>
+          <li>
+            Make sure to use a high-contrast focus ring (see my
+            <a href="/resources/">Resources list</a> for a great example).
+          </li>
+        </ul>
+
+        <h3>Common Issues</h3>
+
+        <h4>Links that are styled as buttons</h4>
+        <dl>
+          <dt>Problem</dt>
+          <dd>
+            Using a link because it looks like a button, but it performs an
+            action
+          </dd>
+          <dt>Solution</dt>
+          <dd>
+            If the trigger performs an action (like "Submit"), use a
+            <code>button</code>. If it must look like a button but actually
+            navigates to a new page, use an <code>a</code> tag and style it, but
+            ensure the accessible name and context remain clear.
+          </dd>
+        </dl>
+
+        <h4>Empty links</h4>
+        <dl>
+          <dt>Problem</dt>
+          <dd>Using links to trigger menus</dd>
+          <dt>Solution</dt>
+          <dd>
+            Use a button; links should not be used without a "real" destination.
+            For example, <code>a href="javascript:void(0)"</code> is a
+            non-functional link.
+          </dd>
+        </dl>
+
+        <h4>Custom buttons built with div or span elements</h4>
+        <dl>
+          <dt>Problem</dt>
+          <dd>
+            Building buttons with <code>div</code> or <code>span</code> elements
+            because they offer easier styling
+          </dd>
+          <dt>Solution</dt>
+          <dd>
+            Use a button; divs and spans are structural elements that offer no
+            native keyboard or mouse support when it comes to accessibility.
+          </dd>
+        </dl>
+
+        <h4>Silent buttons</h4>
+        <dl>
+          <dt>Problem</dt>
+          <dd>
+            Buttons that change the state of something (such as
+            expanding/collapsing an accordion) without announcing it
+          </dd>
+          <dt>Solution</dt>
+          <dd>
+            Use
+            <a href="https://www.w3.org/WAI/standards-guidelines/aria/">ARIA</a>
+            attributes such as <code>aria-expanded</code> or
+            <code>aria-pressed</code> to communicate button state.
+          </dd>
+        </dl>
+
+        <h3>Deciding which to use</h3>
+
+        <p>Ask yourself the following:</p>
+
+        <dl>
+          <dt>Does it change the URL?</dt>
+          <dd>Use a <b>link</b></dd>
+          <dt>Does it move focus to a different page?</dt>
+          <dd>Use a <b>link</b></dd>
+          <dt>Does it toggle state (such as "like" and "dislike")?</dt>
+          <dd>Use a <b>button</b></dd>
+          <dt>Does it open a modal or a drawer?</dt>
+          <dd>Use a <b>button</b></dd>
+        </dl>
+
+        <h4>An edge-case worth mentioning</h4>
+
+        <p>
+          It might be tempting to use <code>role="button"</code> with a link.
+          Whilst this is fine in itself, ask yourself: can a button work just as
+          well here? This is not always appropriate but is worth considering.
+        </p>
+
+        <p>
+          It's also worth remembering that your link's text can be used to
+          determine mark-up, to an extent. For example, a link to "Get Started"
+          may be styled as a button but the combination of the
+          <code>a</code> tag and instructional text informs screen reader users
+          that they're on a link, so the additional <code>role</code> isn't
+          strictly required.
+        </p>
+
+        <h3>Key points</h3>
+        <ul>
+          <li>Don't let "look and feel" dictate code.</li>
+          <li>
+            Try semantic HTML elements first (i.e. use a
+            <code>button</code> before trying anything else).
+          </li>
+          <li>
+            The moment you add a click handler to a link, it becomes a button.
+          </li>
+          <li>
+            If it looks like a button, it should <b>behave</b> like a button for
+            all users.
+          </li>
+        </ul>
+
+        <p>
+          Hopefully that helps clarify things a little, but if not, you can
+          always reach out to me on
+          <a
+            href="https://www.linkedin.com/in/damien-r-4b9b37371/"
+            target="_blank"
+            >LinkedIn<span class="sr-only"> (opens in a new tab)</span></a
+          >.
+        </p>
+      </article>
+    </main>
+
+    <footer>
+      <p>
+        Built with raw HTML/CSS. No trackers. No cookies. Hosted on GitHub
+        Pages.
+      </p>
+    </footer>
+  </body>
+</html>
