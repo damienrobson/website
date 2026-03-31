@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>When Colour Contrast Isn't Enough | Damien Robson</title>
+
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+  </head>
+  <body>
+    <div id="skip"><a href="#content">Skip to Main Content</a></div>
+
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/articles/" aria-current="page">Articles</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/now">Now</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1>Damien Robson</h1>
+      <p>
+        <strong>I'm Damien.</strong> I build digital experiences that everyone
+        can use.
+      </p>
+    </header>
+
+    <main id="content">
+      <article>
+        <header>
+          <h2>When Colour Contrast Isn't Enough</h2>
+          <div class="post-meta">
+            <time datetime="2026-03-31">March 31, 2026</time> •
+            <span>Design & Accessibility</span>
+          </div>
+        </header>
+
+        <p>
+          Colour contrast ratios are one of those "bread-and-butter" tools
+          hanging from any accessibility professional's belt. They're one of the
+          easiest issues to spot with the naked eye, and the rules are pretty
+          set in stone:
+        </p>
+        <ul>
+          <li>A ratio of 4.5:1 for "normal" text (up to 24px)</li>
+          <li>
+            A ratio of 3:1 for "large" text (over 24px, or 19px if the text is
+            bold)
+          </li>
+        </ul>
+
+        <p>
+          Simple, right? Pick a background colour, and then make the number go
+          up until the foreground colour satisfies the ratio.
+        </p>
+
+        <p>Well, not exactly.</p>
+
+        <p>
+          The numbers "work" in terms of setting a minimum baseline to work
+          towards, but they don't take into account the subtleties and variances
+          that the human eye can experience. Just because the numbers say your
+          colours are "ok", doesn't mean they are. In fact, there are situations
+          where even compliant colours can cause problems, and that's what we're
+          going to take a brief look into now.
+        </p>
+
+        <h3>Halation</h3>
+
+        <p>
+          If you've ever stared at a neon sign outside of a shop or bar at
+          night, you've probably noticed that the colour from the light source
+          "bleeds" into the darker backdrop. That's <em>halation</em>. When
+          users with low vision or conditions such as astigmatism view said
+          effect, the "fog" actively works against them and can actually
+          decrease readability, even when the mathematically-perfect ratio of
+          21:1 is reached.
+        </p>
+
+        <p>
+          A commonly-used way to reduce this effect is to simply adjust one of
+          the colours in such a way that it still meets the ratios, but in a way
+          that the contrast is reduced. If you look at webpages that have white
+          background, for example, more often than not you'll find that the
+          colour used isn't actually "white" (#FFFFFF) but a slightly off-white
+          (such as #F5F5F5). To most, the colour is "white", but users who
+          experience halation will thank you for going easy on their eyes that
+          little bit more.
+        </p>
+
+        <h3>Chromostereopsis</h3>
+
+        <p>
+          You weren't expecting a lesson in biology, were you...?
+          Chromostereopsis (kro-mo-ste-ree-op-sis) is that odd "vibration" that
+          you can't explain when you put two high-saturation colours beside one
+          another. You would never put red (#FF0000) on blue (#0000FF) because
+          it fails the contrast ratio (2.15:1), but try it out, and you'll see
+          it immediately. Try as you might, you'll be hard-pressed to stop the
+          vibration effect if you try and focus on the foreground colour.
+        </p>
+
+        <p>
+          WCAG calculates contrast ratio via luminance (or brightness of colour)
+          as opposed to hue (the actual colour), so certain colour combinations
+          can therefore "pass" the ratio criteria but still fail when put in
+          front of an actual set of human eyes.
+        </p>
+
+        <h3>Colour Vision Deficiency</h3>
+
+        <p>
+          People with variations of colour vision deficiency may perceive
+          certain colours as much darker than someone with typical vision. With
+          protanopia, for example, a red button that looks "bright" to users
+          without any colour loss may have very low luminance to users with it.
+        </p>
+
+        <p>
+          I mentioned previously that WCAG measures colour in luminance. In
+          actuality, it's a little more specific; colour is measured in
+          "relative luminance" (simply, how bright the human eye perceives a
+          colour). By doing this, the colour contrast ratio ensures that
+          colour-vision deficient users can still understand the contrast of a
+          colour, even if they cannot see the colour itself.
+        </p>
+
+        <h3>How to handle all of this</h3>
+
+        <p>
+          <strong
+            >Don't just design for the validator; design for the viewer.</strong
+          >
+        </p>
+
+        <p>
+          We use tools to automate checks. They're great for a quick check, a
+          ballpark figure, a guesstimate, but they should never supplant actual
+          human user testing. If a user feeds back that they struggle to read a
+          combination of colours, or that a certain part of a website hurts
+          their head, then maybe consider some tweaks to your colour palette.
+          Better yet, run actual user research and ask them directly. You'll
+          save time, money and your users will thank you (even if they don't
+          notice anything at all).
+        </p>
+      </article>
+    </main>
+
+    <footer>
+      <p>
+        Built with raw HTML/CSS. No trackers. No cookies. Hosted on GitHub
+        Pages.
+      </p>
+    </footer>
+  </body>
+</html>
