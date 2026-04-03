@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tools | Damien Robson</title>
+
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: sans-serif;
+        margin: 20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f8f9fa;
+        color: #333;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+      }
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+      .ratio-pill {
+        background-color: #e9ecef;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-weight: bold;
+      }
+
+      #ratio-calculator {
+        align-items: center;
+        background-color: #efefef;
+        border: 1px solid #afafaf;
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+        padding: 16px;
+      }
+
+      #ratio-calculator label {
+        font-weight: 600;
+      }
+
+      #ratio-calculator button {
+        min-height: 24px;
+        align-self: flex-end;
+        background-color: white;
+      }
+
+      #calculated-ratio.hidden {
+        display: none;
+      }
+
+      #calculated-ratio.shown {
+        align-items: center;
+        background-color: #efefef;
+        border: 1px solid #afafaf;
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+        padding: 16px;
+      }
+
+      @media (max-width: 540px) {
+        #ratio-calculator {
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        #ratio-calculator button {
+          align-self: inherit;
+        }
+
+        #calculated-ratio.shown {
+          flex-direction: column;
+        }
+      }
+    </style>
+
+    <script>
+      const getLuminance = (r, g, b) => {
+        const a = [r, g, b].map((v) => {
+          v /= 255;
+          return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+        });
+        return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+      };
+
+      const hexToRgb = (hex) => {
+        const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        hex = hex.replace(
+          shorthandRegex,
+          (m, r, g, b) => r + r + g + g + b + b,
+        );
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result
+          ? [
+              parseInt(result[1], 16),
+              parseInt(result[2], 16),
+              parseInt(result[3], 16),
+            ]
+          : null;
+      };
+
+      const getContrastRatio = (hex1, hex2) => {
+        const rgb1 = hexToRgb(hex1);
+        const rgb2 = hexToRgb(hex2);
+
+        if (!rgb1 || !rgb2) return null;
+
+        const lum1 = getLuminance(...rgb1);
+        const lum2 = getLuminance(...rgb2);
+
+        const brightest = Math.max(lum1, lum2);
+        const darkest = Math.min(lum1, lum2);
+
+        return (brightest + 0.05) / (darkest + 0.05);
+      };
+
+      function calculate() {
+        const { value: foregroundValue } = document.querySelector(
+          "input#foreground-colour",
+        );
+        const { value: backgroundValue } = document.querySelector(
+          "input#background-colour",
+        );
+
+        const contrastRatio = getContrastRatio(
+          foregroundValue,
+          backgroundValue,
+        );
+
+        document
+          .querySelector("div#calculated-ratio")
+          .classList.remove("hidden");
+        document.querySelector("div#calculated-ratio").classList.add("shown");
+        document.querySelector("div#calculated-ratio").innerHTML =
+          `These colours have a contrast ratio of&nbsp;<strong>${contrastRatio.toFixed(2)} : 1</strong>`;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="skip"><a href="#content">Skip to Main Content</a></div>
+
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li>
+          <a href="/resources/">Resources</a>
+        </li>
+        <li><a href="/articles/" aria-current="page">Tools</a></li>
+        <li><a href="/now">Now</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1>Damien Robson</h1>
+      <p>
+        <strong>I'm Damien.</strong> I build digital experiences that everyone
+        can use.
+      </p>
+    </header>
+
+    <main id="content">
+      <article>
+        <h2>Colour Contrast Ratio Checker</h2>
+
+        <p>
+          I've always been fascinated by colour, and particularly colour theory.
+          I think it's part of the reason why I became interested in digital
+          accessibility in the first place. Colour contrast ratios are a staple
+          tool in the arsenal of an accessibility specialist, so I've spent a
+          little time learning how it all hangs together and built the tool
+          below. Have a play with it; just provide the two HEX codes you want to
+          compare, and then trigger the calculation with the Calculate button.
+        </p>
+
+        <div id="ratio-calculator">
+          <div>
+            <label for="foreground-colour"> Foreground Colour </label>
+            <input id="foreground-colour" />
+          </div>
+          <div>
+            <label for="background-colour"> Background Colour </label>
+            <input id="background-colour" />
+          </div>
+          <button type="button" onclick="calculate()">Calculate</button>
+        </div>
+
+        <div
+          id="calculated-ratio"
+          class="hidden"
+          aria-atomic="true"
+          aria-live="polite"
+        ></div>
+
+        <h3>Understanding the Thresholds</h3>
+
+        <p>
+          Now that you have a lovely ratio, how do you know if it's good to go
+          or not? Well, here's a quick-reference table that you can use to
+          determine whether you need to reconsider your colours.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Context</th>
+              <th>Minimum Ratio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>AA</strong></td>
+              <td>Normal Text</td>
+              <td><span class="ratio-pill">4.5:1</span></td>
+            </tr>
+            <tr>
+              <td><strong>AA</strong></td>
+              <td>Large Text (&gt;18pt or 14pt bold)</td>
+              <td><span class="ratio-pill">3.0:1</span></td>
+            </tr>
+            <tr>
+              <td><strong>AAA</strong></td>
+              <td>Normal Text</td>
+              <td><span class="ratio-pill">7.0:1</span></td>
+            </tr>
+            <tr>
+              <td><strong>AAA</strong></td>
+              <td>Large Text</td>
+              <td><span class="ratio-pill">4.5:1</span></td>
+            </tr>
+            <tr>
+              <td><strong>UI</strong></td>
+              <td>Graphical Objects / UI Components</td>
+              <td><span class="ratio-pill">3.0:1</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </main>
+
+    <footer>
+      <p>
+        Built with raw HTML/CSS. No trackers. No cookies. Hosted on GitHub
+        Pages.
+      </p>
+    </footer>
+  </body>
+</html>
