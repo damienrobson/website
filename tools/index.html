@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Articles | Damien Robson</title>
+    <title>Tools | Damien Robson</title>
 
     <link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
   </head>
@@ -13,9 +13,11 @@
     <nav aria-label="Main">
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/articles/" aria-current="page">Articles</a></li>
-        <li><a href="/resources/">Resources</a></li>
-        <li><a href="/tools/">Tools</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li>
+          <a href="/resources/">Resources</a>
+        </li>
+        <li><a href="/tools/" aria-current="page">Tools</a></li>
         <li><a href="/now">Now</a></li>
       </ul>
     </nav>
@@ -29,17 +31,24 @@
     </header>
 
     <main id="content">
-      <article>
-        <header>
-          <h2>Page Header</h2>
-          <div class="post-meta">
-            <time datetime="2026-02-28">Post Date</time> •
-            <span>Post Tags</span>
-          </div>
-        </header>
-
-        <!-- Content -->
-      </article>
+      <section id="tools">
+        <h2>Tools</h2>
+        <p>Things I've made.</p>
+        <ul class="item-list">
+          <li>
+            <span class="tags">Design • Colour</span><br />
+            <a
+              href="/tools/colour-contrast-ratio-checker.html"
+              aria-label="Universal Focus Indicator (opens in a new tab)"
+              >Colour Contrast Checker</a
+            >
+            <p>
+              I built my own colour contrast checker (purely out of curiosity).
+              Give it a try.
+            </p>
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer>
