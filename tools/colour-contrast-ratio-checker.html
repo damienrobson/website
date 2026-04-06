@@ -14,12 +14,14 @@
         margin: 20px 0;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
+
       th,
       td {
         padding: 12px 15px;
         text-align: left;
         border-bottom: 1px solid #ddd;
       }
+
       th {
         background-color: #f8f9fa;
         color: #333;
@@ -27,21 +29,17 @@
         text-transform: uppercase;
         font-size: 0.85rem;
       }
+
       tr:hover {
         background-color: #f1f1f1;
       }
+
       .ratio-pill {
         background-color: #e9ecef;
         padding: 4px 8px;
         border-radius: 4px;
         font-family: monospace;
         font-weight: bold;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        .ratio-pill {
-          color: black;
-        }
       }
 
       #ratio-calculator {
@@ -94,8 +92,16 @@
       }
 
       @media (prefers-color-scheme: dark) {
+        .ratio-pill {
+          color: black;
+        }
+
         #ratio-calculator label {
           color: black;
+        }
+
+        tr:hover {
+          background-color: #1f1f1f;
         }
       }
     </style>
