@@ -20,6 +20,10 @@ const { Content } = await render(post);
   <article>
     <h1>{post.data.title}</h1>
     <p>Published on: {post.data.pubDate.toDateString()}</p>
+    <p>
+      Tags:{' '}
+      {(post.data.tags ?? []).sort((a, b) => a.localeCompare(b)).join(', ')}
+    </p>
     <hr />
     <Content />
   </article>

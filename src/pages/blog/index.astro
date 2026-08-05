@@ -23,6 +23,12 @@ const sortedPosts = allPosts.sort((a, b) => {
             <p class='blog-post-list-item-date'>
               Published: {new Date(post.data.pubDate).toDateString()}
             </p>
+            <p class='blog-post-list-item-tags'>
+              Tags:{' '}
+              {(post.data.tags ?? [])
+                .sort((a, b) => a.localeCompare(b))
+                .join(', ')}
+            </p>
             <p class='blog-post-list-item-description'>
               {post.data.description ?? ''}
             </p>

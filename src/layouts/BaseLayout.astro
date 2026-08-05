@@ -13,9 +13,12 @@ const { title = 'damienrobson' } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <div id='skip'>
+      <a href='#content'>Skip to Content</a>
+    </div>
     <Navbar />
 
-    <main>
+    <main id='content'>
       <slot />
     </main>
   </body>
