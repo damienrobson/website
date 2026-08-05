@@ -1,24 +1,25 @@
 ---
+
 ---
 
-<header class="site-header">
-  <div class="header-container">
-    <a href="/" class="logo">damienrobson</a>
+<header class='site-header'>
+  <div class='header-container'>
+    <a href='/' class='logo'>damienrobson</a>
 
-    <button 
-      id="menu-toggle" 
-      aria-expanded="false" 
-      aria-controls="primary-navigation"
-      aria-label="Toggle navigation menu"
+    <button
+      id='menu-toggle'
+      aria-expanded='false'
+      aria-controls='primary-navigation'
+      aria-label='Toggle navigation menu'
     >
-      <span class="hamburger-icon" aria-hidden="true">☰</span>
+      <span class='hamburger-icon' aria-hidden='true'>☰</span>
     </button>
 
-    <nav id="primary-navigation" class="nav-menu">
+    <nav id='primary-navigation' class='nav-menu'>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/blog">Blog</a></li>
+        <li><a href='/'>Home</a></li>
+        <li><a href='/about'>About</a></li>
+        <li><a href='/blog'>Blog</a></li>
       </ul>
     </nav>
   </div>
@@ -30,9 +31,9 @@
 
   button?.addEventListener('click', () => {
     const isExpanded = button.getAttribute('aria-expanded') === 'true';
-    
+
     button.setAttribute('aria-expanded', (!isExpanded).toString());
-    
+
     nav?.classList.toggle('is-active');
   });
 </script>
@@ -76,11 +77,11 @@
 
   @media (max-width: 600px) {
     #menu-toggle {
-      display: block; 
+      display: block;
     }
 
     .nav-menu {
-      display: none; 
+      display: none;
       position: absolute;
       top: 60px;
       left: 0;

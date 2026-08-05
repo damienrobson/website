@@ -4,21 +4,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort((a, b) => {
-  return new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf();
-});;
+  return (
+    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+  );
+});
 ---
 
-<BaseLayout title="Blog | damienrobson">
+<BaseLayout title='Blog | damienrobson'>
   <h1>Blog Posts</h1>
   <ul>
-    {sortedPosts.map((post) => (
-      <li>
-        <a href={`/blog/${post.id}`}>
-          <h2>{post.data.title}</h2>
-        </a>
+    {
+      sortedPosts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}`}>
+            <h2>{post.data.title}</h2>
+          </a>
           <p>Published: {new Date(post.data.pubDate).toDateString()}</p>
-          <p>{post.data.description??''}</p>
-      </li>
-    ))}
+          <p>{post.data.description ?? ''}</p>
+        </li>
+      ))
+    }
   </ul>
 </BaseLayout>
