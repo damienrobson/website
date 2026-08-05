@@ -1,7 +1,7 @@
 ---
-title: "Why Accessible HTML Matters"
-description: "A deep dive into semantic HTML landmarks and keyboard navigation."
+title: "Test Post"
+description: "Just a test post to make sure everything is wired up correctly."
 pubDate: "2026-08-05"
 ---
 
-Welcome to my blog! Today I want to talk about basic accessibility principles...
+Actual works and words coming soon, I promise.

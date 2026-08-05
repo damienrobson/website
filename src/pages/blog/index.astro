@@ -12,17 +12,25 @@ const sortedPosts = allPosts.sort((a, b) => {
 
 <BaseLayout title='Blog | damienrobson'>
   <h1>Blog Posts</h1>
-  <ul>
+  <ul class='blog-post-list'>
     {
-      sortedPosts.map((post) => (
-        <li>
-          <a href={`/blog/${post.id}`}>
-            <h2>{post.data.title}</h2>
-          </a>
-          <p>Published: {new Date(post.data.pubDate).toDateString()}</p>
-          <p>{post.data.description ?? ''}</p>
-        </li>
-      ))
+      sortedPosts.length > 0 ? (
+        sortedPosts.map((post) => (
+          <li class='blog-post-list-item'>
+            <a class='blog-post-list-item-link' href={`/blog/${post.id}`}>
+              <h2>{post.data.title}</h2>
+            </a>
+            <p class='blog-post-list-item-date'>
+              Published: {new Date(post.data.pubDate).toDateString()}
+            </p>
+            <p class='blog-post-list-item-description'>
+              {post.data.description ?? ''}
+            </p>
+          </li>
+        ))
+      ) : (
+        <li>No blog posts found.</li>
+      )
     }
   </ul>
 </BaseLayout>

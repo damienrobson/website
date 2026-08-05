@@ -196,3 +196,57 @@ footer a {
 p {
   margin: 1em 0;
 }
+
+.blog-post-list {
+}
+
+.blog-post-list-item {
+}
+
+.blog-post-list {
+  margin: 0;
+  list-style: none;
+}
+
+.blog-post-list .blog-post-list-item a {
+  display: flex;
+  color: black;
+}
+
+.blog-post-list .blog-post-list-item a:hover,
+.blog-post-list .blog-post-list-item a:focus,
+.blog-post-list .blog-post-list-item a:active {
+  text-decoration: none;
+  background: rgba(200, 200, 200, 0.2);
+}
+
+.blog-post-list .blog-post-list-item .blog-post-list-item-date {
+  font-family: monospace, monospace;
+  font-size: 0.8rem;
+  vertical-align: middle;
+  padding-right: 2rem;
+  color: grey;
+}
+
+ol,
+ul {
+  margin: 1em;
+}
+
+ol li ol,
+ol li ul,
+ul li ol,
+ul li ul {
+  margin: 0 2em;
+}
+
+ol li p,
+ul li p {
+  margin: 0;
+}
+
+blockquote {
+  padding: 1em 0 1em 1em;
+  font-style: italic;
+  border-left: solid 3px var(--accent-color);
+}
