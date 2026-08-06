@@ -17,6 +17,7 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={post.data.title}>
+  <a href='/blog'>Return to blog posts</a>
   <article>
     <h1>{post.data.title}</h1>
     <p>Published on: {post.data.pubDate.toDateString()}</p>
