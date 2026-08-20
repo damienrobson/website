@@ -1,6 +1,6 @@
 ---
 title: 'Accessibility Checklist'
-description: 'Quickly review content, visuals, images, and media against key accessibility best practices - plain language, clear headings, alt text, captions, contrast, and inclusive design - to create experiences everyone can use.'
+description: 'A quick list of things you can check through to make sure nothing is missed or forgotten about.'
 pubDate: '2026-07-20'
 tags: ['Accessibility']
 ---

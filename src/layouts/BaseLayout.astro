@@ -11,6 +11,21 @@ const { title = 'damienrobson' } = Astro.props;
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+          document.documentElement.classList.add('dark');
+          // Sync to body when DOM is ready
+          document.addEventListener('DOMContentLoaded', () =>
+            document.body.classList.add('dark')
+          );
+        }
+      })();
+    </script>
     <title>{title}</title>
   </head>
   <body>

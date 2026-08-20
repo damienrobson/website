@@ -1,6 +1,6 @@
 ---
 title: 'Guidance on Headings'
-description: 'Master accessible heading structures with practical guidance on hierarchy, semantics, WCAG compliance, screen reader navigation, and developer best practices. Learn how to create clear, structured content that works for everyone.'
+description: "Headings are one of the easiest things to get wrong. Let's take a look at how to get them right."
 pubDate: '2026-07-16'
 tags: ['Accessibility']
 ---

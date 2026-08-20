@@ -4,18 +4,66 @@
 
 <header class='site-header'>
   <div class='header-container'>
-    <a href='/' class='logo'>damienrobson</a>
+    <div class='logo-theme-switcher'>
+      <a href='/' class='logo'>damienrobson</a>
+
+      <button
+        id='theme-toggle'
+        aria-label='Switch to dark mode'
+        aria-pressed='false'
+      >
+        <svg
+          class='theme-icon icon-sun'
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          aria-hidden='true'
+        >
+          <circle cx='12' cy='12' r='5'></circle>
+          <line x1='12' y1='1' x2='12' y2='3'></line>
+          <line x1='12' y1='21' x2='12' y2='23'></line>
+          <line x1='4.22' y1='4.22' x2='5.64' y2='5.64'></line>
+          <line x1='18.36' y1='18.36' x2='19.78' y2='19.78'></line>
+          <line x1='1' y1='12' x2='3' y2='12'></line>
+          <line x1='21' y1='12' x2='23' y2='12'></line>
+          <line x1='4.22' y1='19.78' x2='5.64' y2='18.36'></line>
+          <line x1='18.36' y1='5.64' x2='19.78' y2='4.22'></line>
+        </svg>
+
+        <svg
+          class='theme-icon icon-moon'
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          aria-hidden='true'
+        >
+          <path d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'></path>
+        </svg>
+      </button>
+    </div>
 
     <button
       id='menu-toggle'
       aria-expanded='false'
       aria-controls='primary-navigation'
-      aria-label='Toggle navigation menu'
+      aria-label='Open navigation menu'
     >
       <span class='hamburger-icon' aria-hidden='true'>☰</span>
     </button>
 
-    <nav id='primary-navigation' class='nav-menu'>
+    <nav
+      id='primary-navigation'
+      class='nav-menu'
+      aria-label='Primary navigation'
+    >
       <ul>
         <li><a href='/'>Home</a></li>
         <li><a href='/about'>About</a></li>
@@ -26,14 +74,148 @@
 </header>
 
 <script>
-  const button = document.getElementById('menu-toggle');
-  const nav = document.getElementById('primary-navigation');
+  document.addEventListener('DOMContentLoaded', () => {
+    /* ----------------------------------------------------------------------
+       1. Theme Switcher Logic
+       ---------------------------------------------------------------------- */
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const storedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
 
-  button?.addEventListener('click', () => {
-    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    let isDark = storedTheme === 'dark' || (!storedTheme && systemPrefersDark);
 
-    button.setAttribute('aria-expanded', (!isExpanded).toString());
+    function applyTheme(dark) {
+      document.body.classList.toggle('dark', dark);
 
-    nav?.classList.toggle('is-active');
+      if (themeToggleBtn) {
+        themeToggleBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        themeToggleBtn.setAttribute(
+          'aria-label',
+          dark ? 'Switch to light mode' : 'Switch to dark mode'
+        );
+      }
+    }
+
+    applyTheme(isDark);
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        isDark = !document.body.classList.contains('dark');
+        applyTheme(isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    }
+
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          isDark = e.matches;
+          applyTheme(isDark);
+        }
+      });
+
+    /* ----------------------------------------------------------------------
+       2. Accessible Mobile Navigation
+       ---------------------------------------------------------------------- */
+    const menuBtn = document.getElementById('menu-toggle');
+    const nav = document.getElementById('primary-navigation');
+    const header = document.querySelector('.site-header');
+
+    if (menuBtn && nav) {
+      const navLinks = nav.querySelectorAll('a');
+      const firstFocusable = navLinks[0];
+      const lastFocusable = navLinks[navLinks.length - 1];
+
+      function openMenu() {
+        menuBtn.setAttribute('aria-expanded', 'true');
+        menuBtn.setAttribute('aria-label', 'Close navigation menu');
+        nav.classList.add('is-active');
+        firstFocusable?.focus();
+      }
+
+      function closeMenu(focusToggle = true) {
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Open navigation menu');
+        nav.classList.remove('is-active');
+        if (focusToggle) menuBtn.focus();
+      }
+
+      menuBtn.addEventListener('click', () => {
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        isExpanded ? closeMenu(false) : openMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        if (!isExpanded) return;
+
+        if (e.key === 'Escape') {
+          closeMenu(true);
+          return;
+        }
+
+        if (e.key === 'Tab' && window.innerWidth <= 600) {
+          if (e.shiftKey) {
+            if (document.activeElement === firstFocusable) {
+              e.preventDefault();
+              menuBtn.focus();
+            } else if (document.activeElement === menuBtn) {
+              e.preventDefault();
+              lastFocusable?.focus();
+            }
+          } else {
+            if (document.activeElement === menuBtn) {
+              e.preventDefault();
+              firstFocusable?.focus();
+            } else if (document.activeElement === lastFocusable) {
+              e.preventDefault();
+              menuBtn.focus();
+            }
+          }
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        if (isExpanded && header && !header.contains(e.target)) {
+          closeMenu(false);
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (
+          window.innerWidth > 600 &&
+          menuBtn.getAttribute('aria-expanded') === 'true'
+        ) {
+          closeMenu(false);
+        }
+      });
+    }
+
+    /* ----------------------------------------------------------------------
+       3. Active Route Handler
+       ---------------------------------------------------------------------- */
+    const routes = document.querySelectorAll('#primary-navigation a');
+    const currentPath = window.location.pathname;
+
+    routes.forEach((link) => {
+      const linkPath = new URL(link.href, window.location.origin).pathname;
+
+      const isMatch =
+        linkPath === '/'
+          ? currentPath === '/'
+          : currentPath.startsWith(linkPath);
+
+      if (isMatch) {
+        link.setAttribute('aria-current', 'page');
+        link.classList.add('active');
+      } else {
+        link.removeAttribute('aria-current');
+        link.classList.remove('active');
+      }
+    });
   });
 </script>

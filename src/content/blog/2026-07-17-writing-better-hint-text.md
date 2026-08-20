@@ -1,6 +1,6 @@
 ---
 title: 'Writing better hint text'
-description: 'Discover how to use hint text for accessible forms: learn best practices for placement, when to use it, and what to avoid, ensuring clarity and support for all users entering information.'
+description: 'A short post aiming to provide a little guidance on writing more constructive hint text.'
 pubDate: '2026-07-17'
 tags: ['Accessibility']
 ---
