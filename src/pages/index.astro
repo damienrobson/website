@@ -9,7 +9,7 @@ const sortedPosts = allPosts.sort((a, b) => {
     new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
   );
 });
-const latestPost = sortedPosts[1];
+const latestPost = sortedPosts[0];
 ---
 
 <BaseLayout title='Home | damienrobson'>
@@ -37,7 +37,7 @@ const latestPost = sortedPosts[1];
     </a>
     <div class='divider'></div>
     <p class='blog-post-list-item-description'>
-      {latestPost.data.description}. Published on {
+      {latestPost.data.description} Published on {
         latestPost.data.pubDate.toDateString()
       }
     </p>
