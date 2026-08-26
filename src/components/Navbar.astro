@@ -86,7 +86,7 @@
 
     let isDark = storedTheme === 'dark' || (!storedTheme && systemPrefersDark);
 
-    function applyTheme(dark) {
+    function applyTheme(dark: boolean | undefined) {
       document.body.classList.toggle('dark', dark);
 
       if (themeToggleBtn) {
@@ -130,17 +130,17 @@
       const lastFocusable = navLinks[navLinks.length - 1];
 
       function openMenu() {
-        menuBtn.setAttribute('aria-expanded', 'true');
-        menuBtn.setAttribute('aria-label', 'Close navigation menu');
-        nav.classList.add('is-active');
+        menuBtn?.setAttribute('aria-expanded', 'true');
+        menuBtn?.setAttribute('aria-label', 'Close navigation menu');
+        nav?.classList.add('is-active');
         firstFocusable?.focus();
       }
 
       function closeMenu(focusToggle = true) {
-        menuBtn.setAttribute('aria-expanded', 'false');
-        menuBtn.setAttribute('aria-label', 'Open navigation menu');
-        nav.classList.remove('is-active');
-        if (focusToggle) menuBtn.focus();
+        menuBtn?.setAttribute('aria-expanded', 'false');
+        menuBtn?.setAttribute('aria-label', 'Open navigation menu');
+        nav?.classList.remove('is-active');
+        if (focusToggle) menuBtn?.focus();
       }
 
       menuBtn.addEventListener('click', () => {

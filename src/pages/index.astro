@@ -12,7 +12,7 @@ const sortedPosts = allPosts.sort((a, b) => {
 const latestPost = sortedPosts[0];
 ---
 
-<BaseLayout title='Home | damienrobson'>
+<BaseLayout title="Home | damienrobson">
   <h1>Making the web a better place for everyone.</h1>
   <p>
     Hi, I'm Damien, but you can call me Damo. I'm an accessibility specialist,
@@ -22,7 +22,7 @@ const latestPost = sortedPosts[0];
     glad you're here.
   </p>
 
-  <a href='/blog'>Read all of my ramblings here</a>
+  <a href="/blog">Read all of my ramblings here</a>
 
   <blockquote>
     <strong>Quick thought</strong>: Accessibility isn't a checklist to tick off
@@ -30,13 +30,13 @@ const latestPost = sortedPosts[0];
   </blockquote>
 
   <article>
-    <a class='blog-post-list-item-link' href={`/blog/${latestPost.id}`}>
+    <a class="blog-post-list-item-link" href={`/blog/${latestPost.id}`}>
       <h2>
         Latest post: {latestPost.data.title}
       </h2>
     </a>
-    <div class='divider'></div>
-    <p class='blog-post-list-item-description'>
+    <div class="divider"></div>
+    <p class="blog-post-list-item-description">
       {latestPost.data.description} Published on {
         latestPost.data.pubDate.toDateString()
       }

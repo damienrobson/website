@@ -1,28 +1,31 @@
 {
   "name": "website",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=26.7.0"
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "NODE_ENV=production astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "check": "prettier --check ."
   },
   "dependencies": {
-    "astro": "^7.1.6"
+    "astro": "^7.2.7"
   },
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "^6.10.1",
-    "eslint": "^9.39.5",
-    "eslint-plugin-astro": "^1.7.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "astro-eslint-parser": "^3.1.0",
+    "eslint": "^10.9.1",
+    "eslint-plugin-astro": "^3.1.0",
+    "jiti": "^2.7.0",
     "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript-eslint": "^8.68.0"
   }
 }

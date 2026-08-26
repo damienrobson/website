@@ -10,26 +10,26 @@ const sortedPosts = allPosts.sort((a, b) => {
 });
 ---
 
-<BaseLayout title='Blog | damienrobson'>
+<BaseLayout title="Blog | damienrobson">
   <h1>Blog Posts</h1>
-  <ul class='blog-post-list'>
+  <ul class="blog-post-list">
     {
       sortedPosts.length > 0 ? (
         sortedPosts.map((post) => (
-          <li class='blog-post-list-item'>
-            <a class='blog-post-list-item-link' href={`/blog/${post.id}`}>
+          <li class="blog-post-list-item">
+            <a class="blog-post-list-item-link" href={`/blog/${post.id}`}>
               <h2>{post.data.title}</h2>
             </a>
-            <p class='blog-post-list-item-date'>
+            <p class="blog-post-list-item-date">
               Published: {new Date(post.data.pubDate).toDateString()}
             </p>
-            <p class='blog-post-list-item-tags'>
+            <p class="blog-post-list-item-tags">
               Tags:{' '}
               {(post.data.tags ?? [])
                 .sort((a, b) => a.localeCompare(b))
                 .join(', ')}
             </p>
-            <p class='blog-post-list-item-description'>
+            <p class="blog-post-list-item-description">
               {post.data.description ?? ''}
             </p>
           </li>

@@ -1,24 +1,18 @@
-import eslintPluginAstro from "eslint-plugin-astro";
-import jsxA11y from "eslint-plugin-jsx-a11y";
+import eslintPluginAstro from 'eslint-plugin-astro';
+import * as astroParser from 'astro-eslint-parser';
+import tseslint from 'typescript-eslint';
 
 export default [
-  // Recommended Astro rules
+  { ignores: ['dist', 'node_modules', '.astro'] },
   ...eslintPluginAstro.configs.recommended,
-
-  // Accessibility rules (a11y)
   {
-    plugins: {
-      "jsx-a11y": jsxA11y,
-    },
-    rules: {
-      ...jsxA11y.configs.recommended.rules,
-    },
-  },
-
-  // Custom overrides or rules
-  {
-    rules: {
-      // Add any custom ESLint rules here
+    files: ['**/*.astro'],
+    languageOptions: {
+      parser: astroParser,
+      parserOptions: {
+        parser: tseslint.parser,
+        extraFileExtensions: ['.astro'],
+      },
     },
   },
 ];
