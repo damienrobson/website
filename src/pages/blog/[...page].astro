@@ -1,21 +1,32 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Page } from 'astro';
+import Pagination from '../../components/Pagination.astro';
 
-const allPosts = await getCollection('blog');
-const sortedPosts = allPosts.sort((a, b) => {
-  return (
-    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-  );
-});
+type Props = {
+  page: Page<any>;
+};
+
+export async function getStaticPaths({ paginate }: any) {
+  const allPosts = await getCollection('blog');
+  const sortedPosts = allPosts.sort((a, b) => {
+    return (
+      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+    );
+  });
+  return paginate(sortedPosts, { pageSize: 8 });
+}
+
+const { page } = Astro.props;
 ---
 
 <BaseLayout title="Blog | damienrobson">
   <h1>Blog Posts</h1>
   <ul class="blog-post-list">
     {
-      sortedPosts.length > 0 ? (
-        sortedPosts.map((post) => (
+      page.data.length > 0 ? (
+        page.data.map((post) => (
           <li class="blog-post-list-item">
             <a class="blog-post-list-item-link" href={`/blog/${post.id}`}>
               <h2>{post.data.title}</h2>
@@ -26,7 +37,7 @@ const sortedPosts = allPosts.sort((a, b) => {
             <p class="blog-post-list-item-tags">
               Tags:{' '}
               {(post.data.tags ?? [])
-                .sort((a, b) => a.localeCompare(b))
+                .sort((a: string, b: string) => a.localeCompare(b))
                 .join(', ')}
             </p>
             <p class="blog-post-list-item-description">
@@ -39,4 +50,12 @@ const sortedPosts = allPosts.sort((a, b) => {
       )
     }
   </ul>
+  <Pagination
+    length={page.lastPage}
+    currentPage={page.currentPage}
+    firstUrl={page.url.first}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    lastUrl={page.url.last}
+  />
 </BaseLayout>

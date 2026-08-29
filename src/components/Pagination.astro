@@ -1,0 +1,116 @@
+---
+interface Props {
+  length: number;
+  currentPage: number;
+  firstUrl?: string;
+  prevUrl?: string;
+  nextUrl?: string;
+  lastUrl?: string;
+}
+
+const { length, currentPage, firstUrl, prevUrl, nextUrl, lastUrl } =
+  Astro.props;
+---
+
+<nav aria-label="Pagination" class="pagination">
+  <ol class="pagination-list">
+    <!-- First Page -->
+    <li>
+      {
+        firstUrl ? (
+          <a
+            href={firstUrl}
+            class="pagination-link"
+            aria-label={`Go to first page, page 1 of ${length}`}
+          >
+            <span aria-hidden="true">«</span> First
+          </a>
+        ) : (
+          <span
+            class="pagination-link disabled"
+            aria-disabled="true"
+            aria-label="First page (disabled)"
+          >
+            <span aria-hidden="true">«</span> First
+          </span>
+        )
+      }
+    </li>
+
+    <!-- Previous Page -->
+    <li>
+      {
+        prevUrl ? (
+          <a
+            href={prevUrl}
+            class="pagination-link"
+            aria-label={`Go to previous page, page ${currentPage - 1} of ${length}`}
+          >
+            <span aria-hidden="true">‹</span> Prev
+          </a>
+        ) : (
+          <span
+            class="pagination-link disabled"
+            aria-disabled="true"
+            aria-label="Previous page (disabled)"
+          >
+            <span aria-hidden="true">‹</span> Prev
+          </span>
+        )
+      }
+    </li>
+
+    <!-- Current Page Indicator -->
+    <li class="pagination-info">
+      <span class="pagination-link active" aria-current="page">
+        Page {currentPage} of {length}
+      </span>
+    </li>
+
+    <!-- Next Page -->
+    <li>
+      {
+        nextUrl ? (
+          <a
+            href={nextUrl}
+            class="pagination-link"
+            aria-label={`Go to next page, page ${currentPage + 1} of ${length}`}
+          >
+            Next <span aria-hidden="true">›</span>
+          </a>
+        ) : (
+          <span
+            class="pagination-link disabled"
+            aria-disabled="true"
+            aria-label="Next page (disabled)"
+          >
+            Next <span aria-hidden="true">›</span>
+          </span>
+        )
+      }
+    </li>
+
+    <!-- Last Page -->
+    <li>
+      {
+        lastUrl ? (
+          <a
+            href={lastUrl}
+            class="pagination-link"
+            aria-label={`Go to last page, page ${length} of ${length}`}
+          >
+            Last <span aria-hidden="true">»</span>
+          </a>
+        ) : (
+          <span
+            class="pagination-link disabled"
+            aria-disabled="true"
+            aria-label="Last page (disabled)"
+          >
+            Last <span aria-hidden="true">»</span>
+          </span>
+        )
+      }
+    </li>
+  </ol>
+</nav>
