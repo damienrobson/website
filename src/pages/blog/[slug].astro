@@ -20,11 +20,9 @@ const { Content } = await render(post);
   <a href="/blog">Return to blog posts</a>
   <article>
     <h1>{post.data.title}</h1>
-    <p>Published on {post.data.pubDate.toDateString()}</p>
-    <!-- <p>
-      Tags:{' '}
-      {(post.data.tags ?? []).sort((a, b) => a.localeCompare(b)).join(', ')}
-    </p> -->
+    <p class="blog-post-list-item-date">
+      Published on {post.data.pubDate.toDateString()}
+    </p>
     <div class="divider"></div>
     <Content />
   </article>

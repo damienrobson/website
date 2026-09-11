@@ -29,7 +29,6 @@ const isLocal = import.meta.env.NODE_ENV === 'development';
         ).matches;
         if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
           document.documentElement.classList.add('dark');
-          // Sync to body when DOM is ready
           document.addEventListener('DOMContentLoaded', () =>
             document.body.classList.add('dark')
           );

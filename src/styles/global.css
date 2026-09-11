@@ -1,16 +1,16 @@
 :root {
-  --primary-color: #004d61;
-  --primary-hover: #003644;
-  --accent-color: #822659;
+  --primary-color: #1e293b;
+  --primary-hover: #0f172a;
+  --accent-color: #92400e;
 
-  --bg-color: #f0f0f0;
-  --card-bg: #ffffff;
+  --bg-color: #f9f6ee;
+  --card-bg: #f9f6ee;
 
   --text-color: #1a1a1a;
   --text-muted: #3e5641;
   --btn-text: #ffffff;
 
-  --border-color: #d6d6d6;
+  --border-color: #0f766e;
   --footer-bg: var(--primary-color);
   --footer-text: #ffffff;
   --shadow-color: rgba(26, 26, 26, 0.08);
@@ -52,7 +52,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
-  font-size: 1.125rem;
+  font-size: 24pt;
 }
 
 main {
@@ -162,6 +162,7 @@ header {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 1rem;
+  gap: 16px;
 }
 
 .logo-theme-switcher {
@@ -175,7 +176,6 @@ header {
 }
 
 .logo {
-  font-size: 1.5rem;
   font-weight: bold;
   color: var(--text-color);
   text-decoration: none;
@@ -311,7 +311,6 @@ body.dark .icon-moon {
 }
 
 .post-meta {
-  font-size: 0.85rem;
   color: var(--text-muted);
   margin-bottom: 0.5rem;
 }
@@ -334,13 +333,17 @@ body.dark .icon-moon {
   background: var(--shadow-color);
 }
 
-.blog-post-list .blog-post-list-item .blog-post-list-item-date,
-.blog-post-list .blog-post-list-item .blog-post-list-item-tags {
+.blog-post-list-item-date,
+.blog-post-list-item-tags {
   font-family: monospace;
-  font-size: 0.8rem;
   vertical-align: middle;
   padding-right: 2rem;
   color: var(--text-muted);
+}
+
+.blog-post-list-item-description {
+  margin-bottom: 4rem;
+  margin-top: 1rem;
 }
 
 footer {
@@ -365,7 +368,6 @@ code {
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
-  font-size: 0.875em;
   color: var(--accent-color);
   background-color: var(----bg-color);
   border: 1px solid var(--border-color);
@@ -403,7 +405,6 @@ code {
   background-color: var(--card-bg);
   color: var(--text-color);
   text-decoration: none;
-  font-size: 0.875rem;
   font-weight: 500;
   box-shadow: 0 1px 3px var(--shadow-color);
 }
