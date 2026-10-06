@@ -22,7 +22,10 @@ const latestPost = sortedPosts[0];
     glad you're here.
   </p>
 
-  <a href="/blog">Read all of my ramblings here</a>
+  <a href="/blog">Take a look through all of my previous articles</a>, or read
+  the latest entry by clicking the link below.
+
+  <div class="divider"></div>
 
   <article>
     <a class="blog-post-list-item-link" href={`/blog/${latestPost.id}`}>
@@ -30,11 +33,10 @@ const latestPost = sortedPosts[0];
         Latest post: {latestPost.data.title}
       </h2>
     </a>
-    <div class="divider"></div>
     <p class="blog-post-list-item-description">
-      {latestPost.data.description} Published on {
-        latestPost.data.pubDate.toDateString()
-      }
+      Published on {latestPost.data.pubDate.toDateString()}
+      <br />
+      {latestPost.data.description}
     </p>
   </article>
 </BaseLayout>

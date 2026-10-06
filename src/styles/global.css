@@ -52,7 +52,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
-  font-size: 24pt;
+  font-size: 18pt;
 }
 
 main {
@@ -92,6 +92,10 @@ blockquote {
   font-style: italic;
   border-left: 3px solid var(--accent-color);
   margin: 1.5rem 0;
+}
+
+blockquote p {
+  margin: 0;
 }
 
 ol,
@@ -435,6 +439,12 @@ code {
   color: var(--btn-text);
   border-color: var(--primary-color);
   box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.divider {
+  border-top: 2px solid #bbb;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 480px) {
