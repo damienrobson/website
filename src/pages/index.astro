@@ -21,18 +21,16 @@ const latestPost = sortedPosts[0];
     designer, or just curious about making digital spaces more inclusive, I'm
     glad you're here.
   </p>
-
   <a href="/blog">Take a look through all of my previous articles</a>, or read
   the latest entry by clicking the link below.
-
   <div class="divider"></div>
-
   <article>
-    <a class="blog-post-list-item-link" href={`/blog/${latestPost.id}`}>
-      <h2>
-        Latest post: {latestPost.data.title}
-      </h2>
-    </a>
+    <h2>
+      Latest post:{' '}
+      <a class="blog-post-list-item-link" href={`/blog/${latestPost.id}`}>
+        {latestPost.data.title}
+      </a>
+    </h2>
     <p class="blog-post-list-item-description">
       Published on {latestPost.data.pubDate.toDateString()}
       <br />

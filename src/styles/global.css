@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #1e293b;
+  --primary-color: #1d5525;
   --primary-hover: #0f172a;
   --accent-color: #92400e;
 
@@ -22,8 +22,8 @@
 }
 
 body.dark {
-  --primary-color: #1a758d;
-  --primary-hover: #2da2c0;
+  --primary-color: #3e88b2;
+  --primary-hover: #87abba;
   --accent-color: #b24080;
 
   --bg-color: #121212;
@@ -159,7 +159,8 @@ header {
 }
 
 .header-container,
-.nav-wrapper {
+.nav-wrapper,
+.footer-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -167,6 +168,10 @@ header {
   margin: 0 auto;
   padding: 0 1rem;
   gap: 16px;
+}
+
+.footer-container span {
+  font-size: 0.85rem;
 }
 
 .logo-theme-switcher {
