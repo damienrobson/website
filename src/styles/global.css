@@ -356,21 +356,10 @@ body.dark .icon-moon {
 }
 
 footer {
-  background-color: var(--footer-bg);
-  color: var(--footer-text);
   border-top: 1px solid var(--border-color);
   text-align: center;
   padding: 2rem 0;
   margin-top: 4rem;
-}
-
-footer a {
-  color: var(--footer-text);
-  text-decoration: underline;
-}
-
-footer a:hover {
-  color: var(--primary-hover);
 }
 
 code {
@@ -484,6 +473,13 @@ code {
 @media (min-width: 768px) {
   main {
     margin: 2rem 20rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer-container {
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 }
 
