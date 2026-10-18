@@ -24,7 +24,7 @@
 body.dark {
   --primary-color: #3e88b2;
   --primary-hover: #87abba;
-  --accent-color: #b24080;
+  --accent-color: #b2d080;
 
   --bg-color: #121212;
   --card-bg: #1a1a1a;
@@ -115,7 +115,7 @@ ul li p {
   margin: 0;
 }
 
-:focus-visible {
+*:focus-visible {
   outline: 3px solid var(--accent-color);
   outline-offset: 3px;
   border-radius: 0.125rem;
@@ -415,7 +415,7 @@ code {
 
 .pagination-link:focus-visible {
   outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 .pagination-link.disabled {
