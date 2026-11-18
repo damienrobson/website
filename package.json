@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "NODE_ENV=production astro build",
+    "build": "cross-env NODE_ENV=production astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "^6.10.1",
     "astro-eslint-parser": "^3.2.0",
+    "cross-env": "^10.1.0",
     "eslint": "^10.12.0",
     "eslint-plugin-astro": "^3.2.1",
     "jiti": "^2.7.0",
