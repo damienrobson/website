@@ -24,31 +24,29 @@ const { page } = Astro.props;
 <BaseLayout title="Blog | damienrobson">
   <h1>Blog Posts</h1>
   <ul class="blog-post-list">
-    {
-      page.data.length > 0 ? (
-        page.data.map((post) => (
-          <li class="blog-post-list-item">
-            <a class="blog-post-list-item-link" href={`/blog/${post.id}`}>
-              <h2>{post.data.title}</h2>
-            </a>
-            <p class="blog-post-list-item-date">
-              Published: {new Date(post.data.pubDate).toDateString()}
-            </p>
-            <p class="blog-post-list-item-tags">
-              Tags:{' '}
-              {(post.data.tags ?? [])
-                .sort((a: string, b: string) => a.localeCompare(b))
-                .join(', ')}
-            </p>
-            <p class="blog-post-list-item-description">
-              {post.data.description ?? ''}
-            </p>
-          </li>
-        ))
-      ) : (
-        <li>No blog posts found.</li>
-      )
-    }
+    {page.data.length > 0 ? (
+      page.data.map((post) => (
+        <li class="blog-post-list-item">
+          <a class="blog-post-list-item-link" href={`/blog/${post.id}`}>
+            <h2>{post.data.title}</h2>
+          </a>
+          <p class="blog-post-list-item-date">
+            Published: {new Date(post.data.pubDate).toDateString()}
+          </p>
+          <p class="blog-post-list-item-tags">
+            Tags:{' '}
+            {(post.data.tags ?? [])
+              .sort((a: string, b: string) => a.localeCompare(b))
+              .join(', ')}
+          </p>
+          <p class="blog-post-list-item-description">
+            {post.data.description ?? ''}
+          </p>
+        </li>
+      ))
+    ) : (
+      <li>No blog posts found.</li>
+    )}
   </ul>
   <Pagination
     length={page.lastPage}
